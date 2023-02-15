@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Problem Solving
+        Understanding: 
+            Play the rock paper scissors game in console.log 
+        without GUI.
+        Plan: 
+            Create Github repository html document
+            Create User Input Line
+            return of correct input
+            Create a function that prints out a random gesture
+            Create Function that returns win or lose from user input
+            Call the Function
+        Pseudocode:  
+            When User inputs a gesture, thereafter U
+            compare the gesture to random gesture, thereafter R
+            if the U gesture beats R, return win, if not return lose
+            repeat from 1
+        */
+        let userGest = prompt("Make a gesture: ");
+        while (userGest !== "Rock" && userGest !== "Paper" && userGest !== "Scissors"){
+            userGest = prompt("Please choose between: a) Rock, b) Paper, c) Scissors")
+        } 
+        console.log("Your gesture: " + userGest)
+
+        let words = ["Rock", "Paper", "Scissors"]
+        let computerGest = Math.floor(Math.random()*words.length);
+        if (computerGest === 0){
+            computerGest = "Rock"
+            console.log("Computer gesture: " + computerGest)
+        }else if(computerGest === 1){
+            computerGest = "Paper"
+            console.log("Computer gesture: " + computerGest)
+        }else{
+            computerGest = "Scissors"
+            console.log("Computer gesture: " + computerGest)
+        }
+
+        result();
+        
+
+        function result(){
+            if (userGest === "Rock" && computerGest === "Rock"){
+                console.log("Even")
+            }if (userGest === "Rock" && computerGest === "Paper"){
+                console.log("You lost")
+            }if (userGest === "Rock" && computerGest === "Scissors"){
+                console.log("You won")
+            }if (userGest === "Paper" && computerGest === "Paper"){
+                console.log("Even")
+            }if (userGest === "Paper" && computerGest === "Rock"){
+                console.log("You won")
+            }if (userGest === "Paper" && computerGest === "Scissors"){
+                console.log("You lost")
+            }if (userGest === "Scissors" && computerGest === "Scissors"){
+                console.log("Even")
+            }if (userGest === "Scissors" && computerGest === "Rock"){
+                console.log("You lost")
+            }if (userGest === "Scissors" && computerGest === "Paper"){
+                console.log("You won")
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
