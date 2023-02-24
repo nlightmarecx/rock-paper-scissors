@@ -1,0 +1,127 @@
+@font-face{
+    font-family: lacquer;
+    src: url(Fonts/Lacquer-Regular.ttf);
+}
+
+@font-face {
+    font-family: odinSpear;
+    src: url(Fonts/OdinsSpear-LJnn.ttf)
+}
+
+@font-face {
+    font-family: odinSpearHollow;
+    src: url(Fonts/OdinsSpearRaggedHollow-Pq8B.ttf)
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: white;
+    background-color: black;
+    font-family: lacquer, 'Times New Roman', Times, serif;
+}
+
+#gameTitle{
+    font-size: 72px;
+    text-align: center;
+    margin: 56px auto;
+}
+
+.introTxt{ 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 28px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+#livesTable{
+    font-size: 28px;
+    text-align: center;
+    padding: 20px 10px;
+    margin-bottom: 30px;
+}
+
+#chosenGestsDiv{
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.gest{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chosenGestsDiv > .gest{
+    height: 200px;
+    width: 200px;
+    border: solid 2px whitesmoke;
+    border-radius: 50%;
+}
+
+#uChosenGest{
+    position: absolute;
+    bottom: 8px;
+    left: 38px;
+}
+
+#tChosenGest{
+    position: absolute;
+}
+
+#fChosenGest{
+    position: absolute;
+    bottom: 8px;
+    right: 38px;
+}
+
+#scoreRecordDiv{
+    display: flex;
+    justify-content: center;
+    margin: 5px 5px 40px 5px;
+    flex-direction: column;
+}
+
+.board{
+    display: flex;
+    justify-content: center;
+}
+
+#playersDiv > span{
+    font-size: 32px;
+    font-family: odinSpear;
+    margin: 0 20px;
+} 
+
+#scoresDiv > span{
+    font-size: 74px;
+    font-family: odinSpearHollow;
+    margin: 0 10px;
+} 
+
+#gestOptionsDiv{
+    display: flex;
+    justify-content: center;
+    margin: 0 0 75px 0;
+}
+
+#gestOptionsDiv > .gest{
+    border: solid 1px whitesmoke;
+    height: 120px;
+    width:120px;
+    padding: 12px 0;
+}
+
+.gest > img{
+    height: 95%;
+    width: auto;
+    align-items: center;
+}
