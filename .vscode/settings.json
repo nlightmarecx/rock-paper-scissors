@@ -3,5 +3,9 @@
         "compGest",
         "Pseudocode",
         "Randomizer"
+    ],
+    "liveServer.settings.port": 5501,
+    "cSpell.ignoreWords": [
+        "Vanaheim"
     ]
 }

@@ -4,10 +4,66 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="main.js"></script>
+    <title>The Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    
+    <head>
+        <h1 id="gameTitle">HORNED HELMET</h1>
+        <div id="introTxt1Div">
+            <p id="introTxt1" class="introTxt">SOMEWHERE, A FAR AWAY, IN THE LANDS OF VANAHEIM...</p>
+        </div>
+        <div id="introTxt2Div">
+            <p id="introTxt2" class="introTxt">DURING THE DREADFUL TIMES AND THE FROSTY WINDS,</p>
+        </div>
+        <div id="introTxt3Div">
+            <p id="introTxt3" class="introTxt">TWO ARMIES ARE ABOUT TO COLLIDE.. UNLESS YOU PLAY A Game!</p>
+        </div>
+        <div id="introTxt4Div">
+            <p id="introTxt4" class="introTxt fadeIn">R.P.S. UP TO 5, WILL SAY IF THE PEACE SHALL REMAIN.</p>
+        </div>
+        <h2 id="livesTable">5 CHANCES | 3 CHOICES | 1 DESTINY</h2>
+    </head>
+    <main>
+        <div id="chosenGestsDiv">
+            <div id="uChosenGest" class="gest">
+                <img>
+                <p>You</p>
+            </div>
+            <div id="tChosenGest" class="gest">
+                <img>
+                <p>Thor</p>
+            </div>
+            <div id="fChosenGest" class="gest">
+                <img>
+                <p>Frey</p>
+            </div>
+        </div>
+        <div id="scoreRecordDiv">
+            <div id="playersDiv" class="board">
+                <span id="uScBoard">YOU</span><span id="uScBoard">THOR</span><span id="uScBoard">FREY</span>
+            </div>
+            <div id="scoresDiv" class="board">
+                <span id="uScore">0</span><span id="tScore">0</span><span id="fScore">0</span>
+            </div>
+        </div>
+        <p id="chooseUrWpnMSG">TAKE YOUR WEAPON!</p>
+        <div id="gestOptionsDiv">
+            <div id="bowBtn" class="gest button">
+                <img id="bowImg" src="imgs/Bow.jpg" alt="bow">
+            </div>
+            <div id="swordBtn" class="gest button">
+                <img id="swordImg" src="imgs/Sword.jpg" alt="sword">
+            </div>
+            <div id="shieldBtn" class="gest button">
+                <img id="shieldImg" src="imgs/Shield.jpg" alt="shield">
+            </div>
+        </div>
+        <p id="roundOutcomeMSG"></p>
+    </main>
+    <div id="endGamePage">
+
+    </div>
+    <script src="app.js" charset="UTF-8"></script>
 </body>
 </html>
