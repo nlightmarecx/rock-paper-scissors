@@ -24,6 +24,7 @@ const gameStatus = document.getElementById('gameStatus');
 const uScore = document.getElementById('uScore');
 const tScore = document.getElementById('tScore');
 const fScore = document.getElementById('fScore');
+const endGameDiv = document.getElementById('endGamePage')
 
 let words = ["r", "p", "s"];
 let ubScore = 0;
@@ -167,7 +168,7 @@ function makeResult(){
 
     }
     scoreTable();
-    //declareWinner();
+    declareWinner();
 };
 
 // ROUND RESULT FUNCTIONS ENDS HERE
@@ -181,3 +182,26 @@ function scoreTable(){
     tScore.innerHTML = tbScore;
     fScore.innerHTML = fbScore;
 }
+
+function declareWinner(){
+    if(ubScore === 3 || tbScore === 3 || fbScore === 3){
+        $("header").fadeOut(1500); 
+        $("main").fadeOut(1500); 
+        if (uScore === tScore === fScore){
+            endGameDiv.innerHTML = "Game has finished: It's a tie!";
+        }else if (ubScore > tbScore || ubScore > fbScore){
+            endGameDiv.innerHTML = "Game has finished: Congratulations! You Won!";
+            endGameDiv.style.color = "greenyellow"
+        }else if (tbScore > ubScore || tbScore > fbScore){
+            endGameDiv.innerHTML = "Game has finished: Sad to say! You Lost!";
+            endGameDiv.style.color = "red"
+        }else if (fbScore > tbScore || fbScore > ubScore){
+            endGameDiv.innerHTML = "Game has finished: Sad to say! You Lost!";
+            endGameDiv.style.color = "red"
+
+        }
+    }         
+}
+
+// RESULT FIELD FUNCTIONS ENDS HERE
+// .....................................

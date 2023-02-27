@@ -9,9 +9,12 @@
     box-sizing: border-box;
 }
 
+html{
+    background-color: black;
+}
+
 body {
     color: white;
-    background-color: black;
     font-family: lacquer, 'Times New Roman', Times, serif;
 }
 
@@ -168,6 +171,19 @@ body {
     margin-bottom: 75px;
 }
 
+#endGamePage{
+    font-size: 48px;
+    text-align: center;
+    text-shadow: 0 0 10px cyan;
+    margin: 0 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    
+}
+
 #introTxt1Div{
     max-width: 792.8px;
     margin: 0 auto;
@@ -265,21 +281,5 @@ main{
     }
     100% {
         transform: translateY(0px);
-    }
-}
-
-/*
-body{
-    animation-name: secondPage;
-    animation-delay: 5s;
-    animation-duration: 10s;
-    animation-fill-mode: forwards;
-}
-
-@keyframes secondPage{
-    from {
-        opacity: 1;
-    }to{
-        opacity: 0;
     }
 }
