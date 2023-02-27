@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Rock Paper Scissors Game</title>
     <link rel="stylesheet" href="styles.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 <body>
     <head>
@@ -17,10 +18,10 @@
             <p id="introTxt2" class="introTxt">DURING THE DREADFUL TIMES AND THE FROSTY WINDS,</p>
         </div>
         <div id="introTxt3Div">
-            <p id="introTxt3" class="introTxt">TWO ARMIES ARE ABOUT TO COLLIDE.. UNLESS YOU PLAY A Game!</p>
+            <p id="introTxt3" class="introTxt">TWO ARMIES ARE ABOUT TO COLLIDE.. UNLESS YOU PLAY A GAME!</p>
         </div>
         <div id="introTxt4Div">
-            <p id="introTxt4" class="introTxt fadeIn">R.P.S. UP TO 5, WILL SAY IF THE PEACE SHALL REMAIN.</p>
+            <p id="introTxt4" class="introTxt">R.P.S. UP TO 5, WILL SAY IF THE PEACE SHALL REMAIN.</p>
         </div>
         <h2 id="livesTable">5 CHANCES | 3 CHOICES | 1 DESTINY</h2>
     </head>
@@ -51,12 +52,15 @@
         <div id="gestOptionsDiv">
             <div id="bowBtn" class="gest button">
                 <img id="bowImg" src="imgs/Bow.jpg" alt="bow">
+                <p id="bowInfo" class="weaponInfo"><span class="toGreen">BEATS</span> SWORD<br><span class="toRed">LOSES</span> TO SHIELD</br></p>
             </div>
             <div id="swordBtn" class="gest button">
                 <img id="swordImg" src="imgs/Sword.jpg" alt="sword">
+                <p id="swordInfo" class="weaponInfo"><span class="toGreen">BEATS</span> SHIELD<br><span class="toRed">LOSES</span> TO BOW</br></p>
             </div>
             <div id="shieldBtn" class="gest button">
                 <img id="shieldImg" src="imgs/Shield.jpg" alt="shield">
+                <p id="shieldInfo" class="weaponInfo"><span class="toGreen">BEATS</span> BOW<br><span class="toRed">LOSES</span> TO SWORD</br></p>
             </div>
         </div>
         <p id="roundOutcomeMSG"></p>

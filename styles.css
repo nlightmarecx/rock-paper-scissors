@@ -132,6 +132,8 @@ body {
     height: 120px;
     width:120px;
     padding: 12px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .gest > img{
@@ -139,6 +141,23 @@ body {
     width: auto;
     align-items: center;
     border-radius: 3%;
+}
+
+.weaponInfo{
+    text-align: center;
+    display: none;
+    position: absolute;
+    margin-top: 85px;
+    font-size: 12px;
+    text-shadow: 0 0 5px black;
+}
+
+.toGreen{
+    color: greenyellow;
+}
+
+.toRed{
+    color: red;
 }
 
 #roundOutcomeMSG{
@@ -160,7 +179,7 @@ body {
 }
 
 #introTxt3Div{
-    max-width: 903.5px;
+    max-width: 921px;
     margin: 0 auto;
 }
 
@@ -169,15 +188,14 @@ body {
     margin: 0 auto;
 }
 
-
+/*
 #introTxt1, #introTxt2,
 #introTxt3, #introTxt4 {
     overflow: hidden; 
     white-space: nowrap; 
-    /*opacity: 0; */
+    opacity: 0;
 }
 
-/*
 #introTxt1 {
     animation: typing 3.5s linear;
     opacity: 1;

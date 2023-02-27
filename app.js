@@ -3,6 +3,8 @@ const introTxt2 = document.getElementById('introTxt2');
 const introTxt3 = document.getElementById('introTxt3');
 const introTxt4 = document.getElementById('introTxt4');
 
+const uGestImgOutput = document.getElementsByTagName('img')[0];
+
 const uGestOutput = document.getElementById('uChosenGest');
 const tChosenGest = document.getElementById('tChosenGest');
 const fChosenGest = document.getElementById('fChosenGest');
@@ -31,8 +33,19 @@ let userGest;
 let thorGest;
 let freyGest;
 
-
 choiceMade();
+
+$("#bowBtn").hover(function(){
+    $("#bowInfo").slideToggle();
+})
+
+$("#swordBtn").hover(function(){
+    $("#swordInfo").slideToggle();
+})
+
+$("#shieldBtn").hover(function(){
+    $("#shieldInfo").slideToggle();
+})
 
 // .................................
 // MAKE CHOICE FUNCTIONS STARTS HERE
@@ -42,7 +55,7 @@ function choiceMade(){
         game("Bow");
     });
     swordBtn.addEventListener('click',function(){
-        game("Sword");
+        game("Sword" );
     });
     shieldBtn.addEventListener('click', function(){
         game("Shield");
@@ -52,7 +65,7 @@ function choiceMade(){
 function game(x){
     uGestOutput.innerHTML = x;
     userGest = x;
-    chooseUrWpnMSG.innerHTML = " "; // Needs change: needed to keep the line Y space
+    chooseUrWpnMSG.innerHTML = " ";
     makeThorChoice();
     makeFreyChoice();
     makeResult();
@@ -111,43 +124,43 @@ function makeResult(){
             roundOutcomeMSG.innerHTML = "It's a TIE, \nNothing Changes" //On some reason new lines are not working
             break;
 
-        case "SwordBowBow":
-        case "ShieldSwordSword":
-        case "BowShieldShield":
+        case "ShieldBowBow":
+        case "BowSwordSword":
+        case "SwordShieldShield":
             roundOutcomeMSG.innerHTML = "You WON, Thor and Frey LOST"
             ubScore ++;
             break;
-        case "SwordSwordBow":
-        case "ShieldShieldSword":
-        case "BowBowShield":
+        case "SwordSwordShield":
+        case "BowBowSword":
+        case "ShieldShieldBow":
             roundOutcomeMSG.innerHTML = "You and Thor WON, Frey LOST"
             ubScore ++;
             tbScore ++;
             break;
-        case "SwordBowSword":  
-        case "ShieldSwordShield":
-        case "BowShieldBow":        
+        case "SwordShieldSword":  
+        case "ShieldBowShield":
+        case "BowSwordBow":        
             roundOutcomeMSG.innerHTML = "You and Frey WON, Thor LOST"
             ubScore ++;
             fbScore ++;
             break;
         
-        case "ShieldBowBow":
-        case "BowSwordSword":
-        case "SwordShieldShield":
+        case "SwordBowBow":
+        case "ShieldSwordSword":
+        case "BowShieldShield":
             roundOutcomeMSG.innerHTML = "You LOST, Thor and Frey WON"
             tbScore ++;
             fbScore ++;
             break;
-        case "ShieldShieldBow":
-        case "BowBowSword":
-        case "SwordSwordShield":
+        case "ShieldShieldSword":
+        case "BowBowShield":
+        case "SwordSwordBow":
             roundOutcomeMSG.innerHTML = "You and Thor LOST, Frey WON"
             fbScore ++;
             break;
-        case "SwordShieldSword":  
-        case "ShieldBowShield":
-        case "BowSwordBow":        
+        case "SwordBowSword":  
+        case "ShieldSwordShield":
+        case "BowShieldBow":        
             roundOutcomeMSG.innerHTML = "You and Frey LOST, Thor WON"
             tbScore ++;
             break;
