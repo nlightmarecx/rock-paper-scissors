@@ -64,7 +64,10 @@ function choiceMade(){
 };
 
 function game(x){
-    uGestOutput.innerHTML = x;
+    //uGestOutput.innerHTML = x;
+    $(".chosenGest_P").text("");
+    $("#uChosenGestImg").attr("src", "imgs/"+x+".jpg");
+    $(".gest").removeClass("circle")
     userGest = x;
     chooseUrWpnMSG.innerHTML = " ";
     makeThorChoice();
@@ -78,28 +81,34 @@ function game(x){
 function makeThorChoice(){
     thorGest = Math.floor(Math.random()*words.length);
     if (thorGest === 0){
-        tChosenGest.innerHTML = "Bow";
+        $("#tChosenGest").addClass("ZrotateBow");
+        $("#tChosenGestImg").attr("src", "imgs/Bow.jpg");
         thorGest = "Bow";
     }else if(thorGest === 1){
-        tChosenGest.innerHTML = "Sword";
+        $("#tChosenGest").addClass("ZrotateSword");
+        $("#tChosenGestImg").attr("src", "imgs/Sword.jpg");
         thorGest = "Sword";
     }else if (thorGest === 2){
-        tChosenGest.innerHTML = "Shield";
+        $("#tChosenGestImg").attr("src", "imgs/Shield.jpg");
         thorGest = "Shield";
     };
 };
 
 function makeFreyChoice(){
     freyGest = Math.floor(Math.random()*words.length);
+    $("#fChosenGest").addClass("Yrotate");
     if (freyGest === 0){
-        fChosenGest.innerHTML = "Bow";
+        $("#fChosenGestImg").attr("src", "imgs/Bow.jpg");
         freyGest = "Bow";
     }else if(freyGest === 1){
-        fChosenGest.innerHTML = "Sword";
+        $("#fChosenGestImg").attr("src", "imgs/Sword.jpg");
         freyGest = "Sword";
     }else if (freyGest === 2){
-        fChosenGest.innerHTML = "Shield";
+        $("#fChosenGestImg").attr("src", "imgs/Shield.jpg");
         freyGest = "Shield";
+        if(ubScore !== 0 && userGest === "Shield" && thorGest === "Sword"){
+            $("#tChosenGest").addClass("XrotateSwSh");
+        }
     };
 };
 
@@ -184,22 +193,23 @@ function scoreTable(){
 }
 
 function declareWinner(){
-    if(ubScore === 3 || tbScore === 3 || fbScore === 3){
+    if(ubScore === 5 || tbScore === 5 || fbScore === 5){
         $("header").fadeOut(1500); 
-        $("main").fadeOut(1500); 
-        if (uScore === tScore === fScore){
-            endGameDiv.innerHTML = "Game has finished: It's a tie!";
-        }else if (ubScore > tbScore || ubScore > fbScore){
-            endGameDiv.innerHTML = "Game has finished: Congratulations! You Won!";
-            endGameDiv.style.color = "greenyellow"
-        }else if (tbScore > ubScore || tbScore > fbScore){
-            endGameDiv.innerHTML = "Game has finished: Sad to say! You Lost!";
-            endGameDiv.style.color = "red"
-        }else if (fbScore > tbScore || fbScore > ubScore){
-            endGameDiv.innerHTML = "Game has finished: Sad to say! You Lost!";
-            endGameDiv.style.color = "red"
-
-        }
+        $("main").fadeOut(1500, function(){
+        endGameDiv.style.fontFamily = "TimesNewRoman"
+            if (uScore === tScore === fScore){
+                $("#endGamePage").text("Game has finished: It's a tie!");
+            }else if (ubScore >= tbScore && ubScore >= fbScore){
+                $("#endGamePage").text("Game has finished: Congratulations! You Won!");
+                endGameDiv.style.color = "greenyellow"
+            }else if (tbScore >= ubScore && tbScore >= fbScore){
+                $("#endGamePage").text("YOU LOST.. But YOU ARE ALIVE, WHAT WILL HAPPEN NEXT, IS UP TO YOU TO DECIDE");
+                endGameDiv.style.textShadow = "none"
+            }else if (fbScore >= tbScore && fbScore >= ubScore){
+                $("#endGamePage").text("YOU LOST.. But YOU ARE ALIVE, WHAT WILL HAPPEN NEXT, IS UP TO YOU TO DECIDE");
+                endGameDiv.style.textShadow = "none"
+            }
+        }); 
     }         
 }
 

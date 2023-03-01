@@ -47,7 +47,6 @@ body {
     height: 400px;
     margin: 0 auto;
     position: relative;
-
 }
 
 .gest{
@@ -57,13 +56,16 @@ body {
 }
 
 #chosenGestsDiv > .gest{
-    background-image: radial-gradient(
-     black, 
-     rgba(0, 255, 255, 0.3)
-     );
     height: 200px;
     width: 200px;
     border-radius: 50%;
+}
+
+.circle{
+    background-image: radial-gradient(
+     black, 
+     rgba(0, 255, 255, 0.3)
+    );
 }
 
 #uChosenGest{
@@ -80,6 +82,22 @@ body {
     position: absolute;
     bottom: 8px;
     right: 38px;
+}
+
+.Yrotate{
+   transform: rotateY(180deg);
+}
+
+.ZrotateBow{
+    transform: rotateZ(135.5deg);
+}
+
+.ZrotateSword{
+    transform: rotateZ(139deg);
+}
+
+.XrotateSwSh{
+    transform: rotateZ(180deg);
 }
 
 #scoreRecordDiv{
@@ -204,7 +222,6 @@ body {
     margin: 0 auto;
 }
 
-/*
 #introTxt1, #introTxt2,
 #introTxt3, #introTxt4 {
     overflow: hidden; 
