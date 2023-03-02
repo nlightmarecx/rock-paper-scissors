@@ -40,19 +40,10 @@ let userGest;
 let thorGest;
 let freyGest;
 
+let gameOn = false;
+
 choiceMade();
-
-$("#bowBtn").hover(function(){
-    $("#bowInfo").slideToggle();
-})
-
-$("#swordBtn").hover(function(){
-    $("#swordInfo").slideToggle();
-})
-
-$("#shieldBtn").hover(function(){
-    $("#shieldInfo").slideToggle();
-})
+toggleWpnInfo();
 
 // .................................
 // MAKE CHOICE FUNCTIONS STARTS HERE
@@ -67,19 +58,35 @@ function choiceMade(){
     shieldBtn.addEventListener('click', function(){
         game("Shield");
     });
+    gameOn = true;
 };
 
 function game(x){
-    //uGestOutput.innerHTML = x;
-    $(".chosenGest_P").text("");
-    $("#uChosenGestImg").attr("src", "imgs/"+x+".jpg");
-    $(".gest").removeClass("circle")
-    userGest = x;
-    chooseUrWpnMSG.innerHTML = " ";
-    makeThorChoice();
-    makeFreyChoice();
-    makeResult();
+    if (gameOn === true){
+        $(".chosenGest_P").text("");
+        $("#uChosenGestImg").attr("src", "imgs/"+x+".jpg");
+        $(".gest").removeClass("circle")
+        userGest = x;
+        chooseUrWpnMSG.innerHTML = " ";
+        makeThorChoice();
+        makeFreyChoice();
+        makeResult();
+    }
 };
+
+function toggleWpnInfo(){
+    $("#bowBtn").hover(function(){
+        $("#bowInfo").slideToggle();
+    })
+    
+    $("#swordBtn").hover(function(){
+        $("#swordInfo").slideToggle();
+    })
+    
+    $("#shieldBtn").hover(function(){
+        $("#shieldInfo").slideToggle();
+    })
+}
 
 // MAKE CHOICE FUNCTIONS ENDS HERE
 // .....................................
@@ -204,32 +211,38 @@ function scoreTable(){
 
 function declareWinner(){
     if(ubScore === 1 || tbScore === 1 || fbScore === 1){
-        $("header").fadeOut(2500);
-        $("main").fadeOut(2500, function(){
+        gameOn = false;
+        $(".gest").removeClass("button");
+        $(".weaponInfo").css("opacity", "0")
+        //$("header").fadeOut(2500);
+        //$("main").fadeOut(2500);
+        $("header").addClass("fadeHalf");
+        $("main").addClass("fadeHalf");
         endGameDiv.style.display = ""
-            if (uScore === tScore === fScore){
-                $("#endGamePage").text("Game has finished: It's a tie!");
-            }else if (ubScore >= tbScore && ubScore >= fbScore){
-                $("#endGamePage").addClass("endGamePageWin");
-                $("#endGameH3").text("YOU WON!");
-                $("#endGameP1").text("YOU ARE AMAZING!");
-                $("#endGameP3").text("YOU SURE YOU'RE SAVING THE WORLD FOR THE FIRST TIME?");
-                $("#endGameP3").addClass("endGamePNorm");
-            }else if (tbScore >= ubScore && tbScore >= fbScore ||
-                fbScore >= tbScore && fbScore >= ubScore){
-                $("#endGamePage").removeClass("endGamePageWin");
-                $("#endGamePage").addClass("endGamePageLost");
-                $("#endGameH3").text("YOU LOST!");
-                endGameH3.style.textShadow = " 0 0 10px red";
-                $("#endGameP2").text("THROUGH, YOU ARE ALIVE! WHAT WILL HAPPEN NEXT,");
-                $("#endGameP2").addClass("endGamePNorm");
-                $("#endGameP3").text("IS UP TO YOU TO DECIDE!");
-                endGameP3.style.textShadow = " 0 0 10px green";
-            }
-            $("#quitBtn").click(10000, function(){
-                endGameDiv.style.display = "none";
-            });
+        if (uScore === tScore === fScore){
+            $("#endGamePage").text("Game has finished: It's a tie!");
+        }else if (ubScore >= tbScore && ubScore >= fbScore){
+            $("#endGamePage").addClass("endGamePageWin");
+            $("#endGameH3").text("YOU WON!");
+            $("#endGameP1").text("YOU ARE AMAZING!");
+            $("#endGameP3").text("YOU SURE YOU'RE SAVING THE WORLD FOR THE FIRST TIME?");
+            $("#endGameP3").addClass("endGamePNorm");
+        }else if (tbScore >= ubScore && tbScore >= fbScore ||
+            fbScore >= tbScore && fbScore >= ubScore){
+            $("#endGamePage").removeClass("endGamePageWin");
+            $("#endGamePage").addClass("endGamePageLost");
+            $("#endGameH3").text("YOU LOST!");
+            endGameH3.style.textShadow = " 0 0 10px red";
+            $("#endGameP2").text("THROUGH, YOU ARE ALIVE! WHAT WILL HAPPEN NEXT,");
+            $("#endGameP2").addClass("endGamePNorm");
+            $("#endGameP3").text("IS UP TO YOU TO DECIDE!");
+            endGameP3.style.textShadow = " 0 0 10px green";
+        }
+        /*
+        $("#quitBtn").click(10000, function(){
+            endGameDiv.style.display = "none";
         });
+        */
     }         
 }
 

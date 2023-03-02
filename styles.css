@@ -243,6 +243,7 @@ body {
 }
 
 .endGamePageWin{
+    background-color: rgba(0, 0, 0, 0.75);
     background-image: linear-gradient(
         rgba(0, 255, 0, 0.15),
         rgba(0, 255, 0, 0.4),
@@ -253,6 +254,7 @@ body {
 }
 
 .endGamePageLost{
+    background-color: rgba(0, 0, 0, 0.75);
     background-image: linear-gradient(
         rgba(255, 0, 0, 0.1),
         rgba(255, 0, 0, 0.2),
@@ -329,7 +331,6 @@ body {
     border: double 2px rgb(89, 255, 47);
 }
 
-/*
 #introTxt1, #introTxt2,
 #introTxt3a, #introTxt3b, #introTxt4 {
     overflow: hidden; 
@@ -372,11 +373,16 @@ body {
     }
 }
 
-@keyframes fadeOut{
+.fadeHalf{
+    animation: fadeHalf;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeHalf{
     0%{
         opacity: 1;
     }100%{
-        opacity: 0;
+        opacity: 0.5;
     }
 }
 
@@ -405,7 +411,7 @@ main{
     animation-fill-mode: forwards;
 }
 
-@keyframes fall {
+@keyframes fall{
     0% {
         transform: translateY(-150px);  
     }
