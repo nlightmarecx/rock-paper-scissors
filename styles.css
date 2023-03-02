@@ -9,11 +9,8 @@
     box-sizing: border-box;
 }
 
-html{
-    background-color: black;
-}
-
 body {
+    background-color: black;
     color: white;
     font-family: lacquer, 'Times New Roman', Times, serif;
 }
@@ -203,27 +200,138 @@ body {
 }
 
 #introTxt1Div{
-    max-width: 792.8px;
+    max-width: fit-content;
     margin: 0 auto;
 }
 
 #introTxt2Div{
-    max-width: 781.4px;
+    max-width: fit-content;
     margin: 0 auto;
 }
 
 #introTxt3Div{
     max-width: 921px;
     margin: 0 auto;
+    position: relative;
+}
+
+#introTxt3a{
+    margin: 0;
+    display: inline-block;
+    max-width: fit-content;
+}
+
+#introTxt3b{
+    margin-left: -20px;
+    display: inline-block;
+    position: absolute;
+    max-width: fit-content;
 }
 
 #introTxt4Div{
-    max-width: 744.8px;
+    max-width: fit-content;
     margin: 0 auto;
 }
 
+/* DECLARE WINNER PAGE */
+#endGamePage{
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 3%;
+    width: 600px;
+    height: 400px; 
+    color: white;
+}
+
+.endGamePageWin{
+    background-image: linear-gradient(
+        rgba(0, 255, 0, 0.15),
+        rgba(0, 255, 0, 0.4),
+        rgba(0, 255, 0, 0.5),
+        rgba(0, 255, 0, 0.4),
+        rgba(0, 255, 0, 0.15)
+    );  
+}
+
+.endGamePageLost{
+    background-image: linear-gradient(
+        rgba(255, 0, 0, 0.1),
+        rgba(255, 0, 0, 0.2),
+        rgba(255, 0, 0, 0.4),
+        rgba(255, 0, 0, 0.2),
+        rgba(255, 0, 0, 0.1)
+    );  
+}
+
+#endGameH3{
+    padding: 40px 0 30px 0;
+}
+
+#msgLinesDiv{
+    margin: 10px 0;
+    font-family: lacquer;
+    font-size: 36px;
+}
+
+.endGamePNorm{
+    font-size: 28px;
+    text-shadow: none;
+    padding: 0 30px;
+}
+
+#endGameBtnDiv{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: 45px 0;
+}
+
+.page2btn{
+    font-size: 20px;
+    font-weight: bold;
+    border: 0;
+    border-radius: 6%;
+    padding: 10px 22px;
+    margin: 0 25px;
+    width: 200px;
+}
+
+.page2btn:hover{
+    transition: 0.25s;
+    cursor: pointer;
+    transform: scaleY(1.15);
+}
+
+#quitBtn:hover{
+    background-color: black;
+    background-image: linear-gradient(
+        10deg,
+        rgba(128, 128, 128, 0.2),
+        rgba(128, 128, 128, 0.3),
+        rgba(128, 128, 128, 0.35),
+        rgba(128, 128, 128, 0.3),
+        rgba(128, 128, 128, 0.2)
+    ); 
+    color: red;
+    border: double 2px red;
+}
+
+#playAgainBtn:hover{
+    background-color: black;
+    background-image: linear-gradient(
+        -10deg,
+        rgba(0, 255, 255, 0.2),
+        rgba(0, 255, 255, 0.3),
+        rgba(0, 255, 255, 0.35),
+        rgba(0, 255, 255, 0.3),
+        rgba(0, 255, 255, 0.2)
+    ); 
+    color: rgb(89, 255, 47);
+    border: double 2px rgb(89, 255, 47);
+}
+
+/*
 #introTxt1, #introTxt2,
-#introTxt3, #introTxt4 {
+#introTxt3a, #introTxt3b, #introTxt4 {
     overflow: hidden; 
     white-space: nowrap; 
     opacity: 0;
@@ -239,13 +347,18 @@ body {
     animation-fill-mode: forwards;
 }
 
-#introTxt3 {
+#introTxt3a {
     animation: typing 4.5s linear 6.5s;
     animation-fill-mode: forwards;
 }
 
+#introTxt3b {
+    animation: typing 5.5s ease 9s;
+    animation-fill-mode: forwards;
+}
+
 #introTxt4 {
-    animation: typing 3.5s linear 10.5s; 
+    animation: typing 3.5s linear 11s; 
     animation-fill-mode: forwards;
 }
 
@@ -271,7 +384,7 @@ main{
     opacity: 0;
     animation-name: fadeIn;
     animation-duration: 0.3s;
-    animation-delay: 15.5s;
+    animation-delay: 16s;
     animation-fill-mode: forwards;
 }
 
@@ -286,7 +399,7 @@ main{
 #gameTitle, #livesTable {
     transform: translateY(-1500px);
     animation-name: fall;
-    animation-delay: 15s;
+    animation-delay: 15.5s;
     animation-duration: 0.3s;
     animation-timing-function: cubic-bezier(0.5, 0.5, 0.25, 1.10);
     animation-fill-mode: forwards;

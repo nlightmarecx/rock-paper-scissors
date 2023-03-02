@@ -24,7 +24,13 @@ const gameStatus = document.getElementById('gameStatus');
 const uScore = document.getElementById('uScore');
 const tScore = document.getElementById('tScore');
 const fScore = document.getElementById('fScore');
-const endGameDiv = document.getElementById('endGamePage')
+
+const endGameDiv = document.getElementById('endGamePage');
+const endGameH3 = document.getElementById('endGameH3');
+const endGameP3 = document.getElementById('endGameP3');
+const quitBtn = document.getElementById('quitBtn');
+const playAgainBtn = document.getElementById('playAgainBtn');
+
 
 let words = ["r", "p", "s"];
 let ubScore = 0;
@@ -81,10 +87,14 @@ function game(x){
 function makeThorChoice(){
     thorGest = Math.floor(Math.random()*words.length);
     if (thorGest === 0){
+        $("#tChosenGest").removeClass("XrotateSwSh");
+        $("#tChosenGest").removeClass("ZrotateSword");
         $("#tChosenGest").addClass("ZrotateBow");
         $("#tChosenGestImg").attr("src", "imgs/Bow.jpg");
         thorGest = "Bow";
     }else if(thorGest === 1){
+        $("#tChosenGest").removeClass("XrotateSwSh");
+        $("#tChosenGest").removeClass("ZrotateBow");
         $("#tChosenGest").addClass("ZrotateSword");
         $("#tChosenGestImg").attr("src", "imgs/Sword.jpg");
         thorGest = "Sword";
@@ -193,23 +203,33 @@ function scoreTable(){
 }
 
 function declareWinner(){
-    if(ubScore === 5 || tbScore === 5 || fbScore === 5){
-        $("header").fadeOut(1500); 
-        $("main").fadeOut(1500, function(){
-        endGameDiv.style.fontFamily = "TimesNewRoman"
+    if(ubScore === 1 || tbScore === 1 || fbScore === 1){
+        $("header").fadeOut(2500);
+        $("main").fadeOut(2500, function(){
+        endGameDiv.style.display = ""
             if (uScore === tScore === fScore){
                 $("#endGamePage").text("Game has finished: It's a tie!");
             }else if (ubScore >= tbScore && ubScore >= fbScore){
-                $("#endGamePage").text("Game has finished: Congratulations! You Won!");
-                endGameDiv.style.color = "greenyellow"
-            }else if (tbScore >= ubScore && tbScore >= fbScore){
-                $("#endGamePage").text("YOU LOST.. But YOU ARE ALIVE, WHAT WILL HAPPEN NEXT, IS UP TO YOU TO DECIDE");
-                endGameDiv.style.textShadow = "none"
-            }else if (fbScore >= tbScore && fbScore >= ubScore){
-                $("#endGamePage").text("YOU LOST.. But YOU ARE ALIVE, WHAT WILL HAPPEN NEXT, IS UP TO YOU TO DECIDE");
-                endGameDiv.style.textShadow = "none"
+                $("#endGamePage").addClass("endGamePageWin");
+                $("#endGameH3").text("YOU WON!");
+                $("#endGameP1").text("YOU ARE AMAZING!");
+                $("#endGameP3").text("YOU SURE YOU'RE SAVING THE WORLD FOR THE FIRST TIME?");
+                $("#endGameP3").addClass("endGamePNorm");
+            }else if (tbScore >= ubScore && tbScore >= fbScore ||
+                fbScore >= tbScore && fbScore >= ubScore){
+                $("#endGamePage").removeClass("endGamePageWin");
+                $("#endGamePage").addClass("endGamePageLost");
+                $("#endGameH3").text("YOU LOST!");
+                endGameH3.style.textShadow = " 0 0 10px red";
+                $("#endGameP2").text("THROUGH, YOU ARE ALIVE! WHAT WILL HAPPEN NEXT,");
+                $("#endGameP2").addClass("endGamePNorm");
+                $("#endGameP3").text("IS UP TO YOU TO DECIDE!");
+                endGameP3.style.textShadow = " 0 0 10px green";
             }
-        }); 
+            $("#quitBtn").click(10000, function(){
+                endGameDiv.style.display = "none";
+            });
+        });
     }         
 }
 
