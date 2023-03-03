@@ -8,6 +8,11 @@ const uGestImgOutput = document.getElementsByTagName('img')[0];
 const uGestOutput = document.getElementById('uChosenGest');
 const tChosenGest = document.getElementById('tChosenGest');
 const fChosenGest = document.getElementById('fChosenGest');
+
+const chooserU = document.getElementsByClassName('chosenGest_P')[0];
+const chooserT = document.getElementsByClassName('chosenGest_P')[1];
+const chooserF = document.getElementsByClassName('chosenGest_P')[2];
+
 const chooseUrWpnMSG = document.getElementById('chooseUrWpnMSG');
 const roundOutcomeMSG = document.getElementById('roundOutcomeMSG');
 
@@ -214,14 +219,9 @@ function declareWinner(){
         gamePause();
         endGamePage();
         restartGame();
-        //$("header").fadeOut(2500);
-        //$("main").fadeOut(2500);
-        /*
-
-        $("#quitBtn").click(10000, function(){
-            endGameDiv.style.display = "none";
+        $("#quitBtn").click(function(){
+            window.open("https://github.com/nlightmarecx", "_blank");
         });
-        */
     }         
 }
 
@@ -246,6 +246,12 @@ function endGamePage(){
         $("#endGameP1").text("YOU ARE AMAZING!");
         $("#endGameP3").text("YOU SURE YOU'RE SAVING THE WORLD FOR THE FIRST TIME?");
         $("#endGameP3").addClass("endGamePNorm");
+        $("#quitBtn").text("QUIT");
+        $("#quitBtn").removeClass("quitBtn");
+        $("#quitBtn").addClass("playAgainBtn");
+        $("#playAgainBtn").text("DO 'EM AGAIN");
+        $("#playAgainBtn").addClass("playAgainBtn");
+
     }else if (tbScore >= ubScore && tbScore >= fbScore ||
         fbScore >= tbScore && fbScore >= ubScore){
         $("#endGameP3").removeClass("endGamePNorm");
@@ -257,6 +263,11 @@ function endGamePage(){
         $("#endGameP1").addClass("endGamePNorm");
         $("#endGameP3").text("IS UP TO YOU TO DECIDE!");
         endGameP3.style.textShadow = " 0 0 10px green";
+        $("#quitBtn").text("QUIT");
+        $("#quitBtn").removeClass("playAgainBtn");
+        $("#quitBtn").addClass("quitBtn");
+        $("#playAgainBtn").text("FIGHT & WIN");
+        $("#playAgainBtn").addClass("playAgainBtn");
     }
 }
 
@@ -279,12 +290,19 @@ function restartGame(){
         $("#introTxt3a").css({"opacity": "1", "animation-delay": "0"});
         $("#introTxt3b").css({"opacity": "1", "animation-delay": "0"});
         $("#introTxt4").css({"opacity": "1", "animation-delay": "0"});
-        gameOn = true;
+        roundOutcomeMSG.innerHTML = ""
         $("#uChosenGestImg").attr("src", "");
         $("#tChosenGestImg").attr("src", "");
         $("#fChosenGestImg").attr("src", "");
-        $(".gest").addClass("circle");
-
+        $(".chosen").addClass("circle");
+        chooserU.innerHTML = "You";
+        chooserT.innerHTML = "Thor";
+        chooserF.innerHTML = "Frey";
+        $("#tChosenGest").removeClass("XrotateSwSh");
+        $("#tChosenGest").removeClass("ZrotateSword");
+        $("#tChosenGest").removeClass("ZrotateBow");
+        $("#fChosenGest").removeClass("Yrotate");
+        gameOn = true;
     });
 }
 

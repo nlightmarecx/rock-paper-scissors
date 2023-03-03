@@ -303,7 +303,7 @@ body {
     transform: scaleY(1.15);
 }
 
-#quitBtn:hover{
+.quitBtn:hover{
     background-color: black;
     background-image: linear-gradient(
         10deg,
@@ -317,7 +317,7 @@ body {
     border: double 2px red;
 }
 
-#playAgainBtn:hover{
+.playAgainBtn:hover{
     background-color: black;
     background-image: linear-gradient(
         -10deg,
