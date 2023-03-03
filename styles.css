@@ -40,10 +40,11 @@ body {
 #chosenGestsDiv{
     display: flex;
     justify-content: center;
-    max-width: 500px;
-    height: 400px;
+    width: 550px;
+    height: 405px;
     margin: 0 auto;
     position: relative;
+    border: solid 1px red;
 }
 
 .gest{
@@ -68,7 +69,7 @@ body {
 #uChosenGest{
     position: absolute;
     bottom: 8px;
-    left: 38px;
+    left: 60px;
 }
 
 #tChosenGest{
@@ -78,7 +79,7 @@ body {
 #fChosenGest{
     position: absolute;
     bottom: 8px;
-    right: 38px;
+    right: 60px;
 }
 
 .Yrotate{

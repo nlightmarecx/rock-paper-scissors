@@ -46,6 +46,9 @@ let thorGest;
 let freyGest;
 
 let gameOn = false;
+let outsiderT = false;
+let outsiderF = false;
+
 
 choiceMade();
 toggleWpnInfo();
@@ -103,16 +106,28 @@ function makeThorChoice(){
         $("#tChosenGest").removeClass("ZrotateSword");
         $("#tChosenGest").addClass("ZrotateBow");
         $("#tChosenGestImg").attr("src", "imgs/Bow.jpg");
-        thorGest = "Bow";
+        if(outsiderT === true){
+            thorGest = " ";
+        }else{
+            thorGest = "Bow";
+        }
     }else if(thorGest === 1){
         $("#tChosenGest").removeClass("XrotateSwSh");
         $("#tChosenGest").removeClass("ZrotateBow");
         $("#tChosenGest").addClass("ZrotateSword");
         $("#tChosenGestImg").attr("src", "imgs/Sword.jpg");
-        thorGest = "Sword";
+        if(outsiderT === true){
+            thorGest = " ";
+        }else{
+            thorGest = "Sword";
+        }
     }else if (thorGest === 2){
         $("#tChosenGestImg").attr("src", "imgs/Shield.jpg");
-        thorGest = "Shield";
+        if(outsiderT === true){
+            thorGest = " ";
+        }else{
+            thorGest = "Shield";
+        }
     };
 };
 
@@ -121,15 +136,30 @@ function makeFreyChoice(){
     $("#fChosenGest").addClass("Yrotate");
     if (freyGest === 0){
         $("#fChosenGestImg").attr("src", "imgs/Bow.jpg");
-        freyGest = "Bow";
+        //freyGest = "Bow";
+        if(outsiderF === true){
+            freyGest = " ";
+        }else{
+            freyGest = "Bow";
+        }
     }else if(freyGest === 1){
         $("#fChosenGestImg").attr("src", "imgs/Sword.jpg");
-        freyGest = "Sword";
+        //freyGest = "Sword";
+        if(outsiderF === true){
+            freyGest = " ";
+        }else{
+            freyGest = "Sword";
+        }
     }else if (freyGest === 2){
         $("#fChosenGestImg").attr("src", "imgs/Shield.jpg");
-        freyGest = "Shield";
+        //freyGest = "Shield";
         if(ubScore !== 0 && userGest === "Shield" && thorGest === "Sword"){
             $("#tChosenGest").addClass("XrotateSwSh");
+        };
+        if(outsiderF === true){
+            freyGest = " ";
+        }else{
+            freyGest = "Shield";
         }
     };
 };
@@ -141,6 +171,58 @@ function makeFreyChoice(){
 // ROUND RESULT FUNCTIONS STARTS HERE
 
 function makeResult(){
+    identifyGestures();
+    scoreTable();
+    identifyOutsider();
+    declareWinner();
+};
+
+function identifyOutsider(){
+    if (ubScore === 2 && ubScore === tbScore && ubScore > fbScore){
+        outsiderF = true;
+        $("#fChosenGestImg").css("display", "none");
+        $("#chosenGestsDiv").css({"height": "400px", "width": "550px"});
+        $("#uChosenGest").css({"bottom": "100px", "left": "38px"});
+        $("#tChosenGest").css({"bottom": "100px", "right": "38px"});
+        if (thorGest === "Sword"){
+            $("#tChosenGest").css({"transform": "rotateY(180deg)"});
+        }
+        if(thorGest === "Bow"){
+            $("#tChosenGest").css({"transform": "rotateZ(225deg)"});
+        };
+        if (userGest === "Sword"){
+            $("#uChosenGest").css({"transform": "rotateZ(0deg)"});
+        }
+        if(userGest === "Bow"){
+            $("#uChosenGest").css({"transform": "rotateZ(45deg)"});
+        };
+        $("#fScBoard").css({"color": "red"});
+        $("#fScore").css({"text-shadow": "0 0 10px red", "color": "grey"});
+
+    }else if(ubScore === 2 && ubScore === fbScore && ubScore > tbScore){
+        outsiderT = true;
+        $("#tChosenGestImg").css("display", "none");
+        $("#chosenGestsDiv").css({"height": "400px", "width": "550px"});
+        $("#uChosenGest").css({"bottom": "100px", "left": "38px"});
+        $("#fChosenGest").css({"bottom": "100px", "right": "38px"});
+        if (freyGest === "Sword"){
+            $("#fChosenGest").css({"transform": "rotateY(180deg)"});
+        }
+        if(freyGest === "Bow"){
+            $("#fChosenGest").css({"transform": "rotateZ(225deg)"});
+        };
+        if (userGest === "Sword"){
+            $("#uChosenGest").css({"transform": "rotateZ(0deg)"});
+        }
+        if(userGest === "Bow"){
+            $("#uChosenGest").css({"transform": "rotateZ(45deg)"});
+        };
+        $("#tScBoard").css({"color": "red"});
+        $("#tScore").css({"text-shadow": "0 0 10px red", "color": "grey"});
+    }
+}
+
+function identifyGestures(){
     switch (userGest+thorGest+freyGest){
         case "BowBowBow":
         case "BowSwordShield":
@@ -176,7 +258,6 @@ function makeResult(){
             ubScore ++;
             fbScore ++;
             break;
-        
         case "SwordBowBow":
         case "ShieldSwordSword":
         case "BowShieldShield":
@@ -197,16 +278,47 @@ function makeResult(){
             tbScore ++;
             break;
 
-    }
-    scoreTable();
-    declareWinner();
-};
+        //............................................................      
+        //TWO PLAYER MODE  
+        //USER & THOR.................................................
+        case "SwordSword ":  
+        case "ShieldShield ":
+        case "BowBow ":        
+            roundOutcomeMSG.innerHTML = "It's a TIE, Nothing Changes";
+            break;
+        case "SwordShield ":  
+        case "ShieldBow ":
+        case "BowSword ":        
+            roundOutcomeMSG.innerHTML = "You WON, Thor LOST"
+            ubScore ++;
+            break;
+        case "BowShield ":  
+        case "SwordBow ":
+        case "ShieldSword ":        
+            roundOutcomeMSG.innerHTML = "You LOST, Thor WON"
+            tbScore ++;
+            break;    
 
-// ROUND RESULT FUNCTIONS ENDS HERE
-// .....................................
-
-// .....................................
-// RESULT FIELD FUNCTIONS STARTS HERE
+        //USER & FREY.................................................
+        case "Sword Sword":  
+        case "Shield Shield":
+        case "Bow Bow":        
+            roundOutcomeMSG.innerHTML = "It's a TIE, Nothing Changes";
+            break;
+        case "Sword Shield":  
+        case "Shield Bow":
+        case "Bow Sword":        
+            roundOutcomeMSG.innerHTML = "You WON, Frey LOST"
+            ubScore ++;
+            break;
+        case "Bow Shield":  
+        case "Sword Bow":
+        case "Shield Sword":        
+            roundOutcomeMSG.innerHTML = "You LOST, Frey WON"
+            fbScore ++;
+            break;    
+    }        
+}
 
 function scoreTable(){
     uScore.innerHTML = ubScore;
@@ -214,8 +326,14 @@ function scoreTable(){
     fScore.innerHTML = fbScore;
 }
 
+// ROUND RESULT FUNCTIONS ENDS HERE
+// .....................................
+
+// .....................................
+// RESULT FIELD FUNCTIONS STARTS HERE
+
 function declareWinner(){
-    if(ubScore === 2 || tbScore === 2 || fbScore === 2){
+    if(ubScore === 3 || tbScore === 3 || fbScore === 3){
         gamePause();
         endGamePage();
         restartGame();
