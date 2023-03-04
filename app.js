@@ -48,10 +48,12 @@ let freyGest;
 let gameOn = false;
 let outsiderT = false;
 let outsiderF = false;
+let numRounds = 5; //+another manually to change num rounds at restart game
 
 
 choiceMade();
 toggleWpnInfo();
+buttonDown();
 
 // .................................
 // MAKE CHOICE FUNCTIONS STARTS HERE
@@ -96,31 +98,50 @@ function toggleWpnInfo(){
     })
 }
 
+function buttonDown(){
+    $("#bowBtn").mousedown(function(){
+        $("#bowBtn").css({"border": "solid 5px grey"});
+    });
+    $("#bowBtn").mouseup(function(){
+        $("#bowBtn").css({"border": "solid 1px whitesmoke"});
+    })
+
+    $("#swordBtn").mousedown(function(){
+        $("#swordBtn").css({"border": "solid 5px grey"});
+    });
+    $("#swordBtn").mouseup(function(){
+        $("#swordBtn").css({"border": "solid 1px whitesmoke"});
+    })
+
+    $("#shieldBtn").mousedown(function(){        
+        $("#shieldBtn").css({"border": "solid 5px grey"});
+    });
+    $("#shieldBtn").mouseup(function(){
+        $("#shieldBtn").css({"border": "solid 1px whitesmoke"});
+    })
+}
+
 // MAKE CHOICE FUNCTIONS ENDS HERE
 // .....................................
 
 function makeThorChoice(){
     thorGest = Math.floor(Math.random()*words.length);
     if (thorGest === 0){
-        $("#tChosenGest").removeClass("XrotateSwSh");
-        $("#tChosenGest").removeClass("ZrotateSword");
-        $("#tChosenGest").addClass("ZrotateBow");
         $("#tChosenGestImg").attr("src", "imgs/Bow.jpg");
         if(outsiderT === true){
             thorGest = " ";
         }else{
             thorGest = "Bow";
         }
+        $("#tChosenGestImg").css({"transform": "rotateZ(135.5deg)"});
     }else if(thorGest === 1){
-        $("#tChosenGest").removeClass("XrotateSwSh");
-        $("#tChosenGest").removeClass("ZrotateBow");
-        $("#tChosenGest").addClass("ZrotateSword");
         $("#tChosenGestImg").attr("src", "imgs/Sword.jpg");
         if(outsiderT === true){
             thorGest = " ";
         }else{
             thorGest = "Sword";
         }
+        $("#tChosenGestImg").css({"transform": "rotateZ(139deg)"});
     }else if (thorGest === 2){
         $("#tChosenGestImg").attr("src", "imgs/Shield.jpg");
         if(outsiderT === true){
@@ -133,10 +154,9 @@ function makeThorChoice(){
 
 function makeFreyChoice(){
     freyGest = Math.floor(Math.random()*words.length);
-    $("#fChosenGest").addClass("Yrotate");
+    $("#fChosenGestImg").css({"transform": "rotateY(180deg)"});
     if (freyGest === 0){
         $("#fChosenGestImg").attr("src", "imgs/Bow.jpg");
-        //freyGest = "Bow";
         if(outsiderF === true){
             freyGest = " ";
         }else{
@@ -144,7 +164,6 @@ function makeFreyChoice(){
         }
     }else if(freyGest === 1){
         $("#fChosenGestImg").attr("src", "imgs/Sword.jpg");
-        //freyGest = "Sword";
         if(outsiderF === true){
             freyGest = " ";
         }else{
@@ -152,9 +171,8 @@ function makeFreyChoice(){
         }
     }else if (freyGest === 2){
         $("#fChosenGestImg").attr("src", "imgs/Shield.jpg");
-        //freyGest = "Shield";
         if(ubScore !== 0 && userGest === "Shield" && thorGest === "Sword"){
-            $("#tChosenGest").addClass("XrotateSwSh");
+            $("#tChosenGestImg").css({"transform": "rotateZ(180deg)"});
         };
         if(outsiderF === true){
             freyGest = " ";
@@ -173,22 +191,21 @@ function makeFreyChoice(){
 function makeResult(){
     identifyGestures();
     scoreTable();
-    identifyOutsider();
     declareWinner();
 };
 
-function identifyOutsider(){
-    if (ubScore === 2 && ubScore === tbScore && ubScore > fbScore){
-        outsiderF = true;
-        $("#fChosenGestImg").css("display", "none");
-        $("#chosenGestsDiv").css({"height": "400px", "width": "550px"});
+function removeOutsider(){
+    //Remove Frey
+    if (ubScore === numRounds && ubScore === tbScore && ubScore > fbScore){
+        $("#fChosenGest").css({"bottom": "202.5px", "right": "175px"});
+        $("#fChosenGest").css("display", "none");
         $("#uChosenGest").css({"bottom": "100px", "left": "38px"});
         $("#tChosenGest").css({"bottom": "100px", "right": "38px"});
         if (thorGest === "Sword"){
             $("#tChosenGest").css({"transform": "rotateY(180deg)"});
         }
         if(thorGest === "Bow"){
-            $("#tChosenGest").css({"transform": "rotateZ(225deg)"});
+            $("#tChosenGest").css({"transform": "rotateZ(88deg)"});
         };
         if (userGest === "Sword"){
             $("#uChosenGest").css({"transform": "rotateZ(0deg)"});
@@ -198,18 +215,18 @@ function identifyOutsider(){
         };
         $("#fScBoard").css({"color": "red"});
         $("#fScore").css({"text-shadow": "0 0 10px red", "color": "grey"});
-
-    }else if(ubScore === 2 && ubScore === fbScore && ubScore > tbScore){
-        outsiderT = true;
-        $("#tChosenGestImg").css("display", "none");
-        $("#chosenGestsDiv").css({"height": "400px", "width": "550px"});
+        numRounds = numRounds + 1;
+        outsiderF = true;
+        //Remove Thor
+    }if (ubScore === numRounds && ubScore === fbScore && ubScore > tbScore){
+        $("#tChosenGest").css("display", "none");
         $("#uChosenGest").css({"bottom": "100px", "left": "38px"});
         $("#fChosenGest").css({"bottom": "100px", "right": "38px"});
         if (freyGest === "Sword"){
-            $("#fChosenGest").css({"transform": "rotateY(180deg)"});
+            $("#fChosenGest").css({"transform": "rotateY(0deg)"});
         }
         if(freyGest === "Bow"){
-            $("#fChosenGest").css({"transform": "rotateZ(225deg)"});
+            $("#fChosenGest").css({"transform": "rotateZ(-45deg)"});
         };
         if (userGest === "Sword"){
             $("#uChosenGest").css({"transform": "rotateZ(0deg)"});
@@ -219,6 +236,8 @@ function identifyOutsider(){
         };
         $("#tScBoard").css({"color": "red"});
         $("#tScore").css({"text-shadow": "0 0 10px red", "color": "grey"});
+        numRounds = numRounds + 1;
+        outsiderT = true;
     }
 }
 
@@ -235,7 +254,7 @@ function identifyGestures(){
         case "SwordSwordSword":
         case "SwordBowShield":
         case "SwordShieldBow":
-            roundOutcomeMSG.innerHTML = "It's a TIE, \nNothing Changes" //On some reason new lines are not working
+            roundOutcomeMSG.innerHTML = "It's a TIE, Nothing Changes"
             break;
 
         case "ShieldBowBow":
@@ -333,14 +352,20 @@ function scoreTable(){
 // RESULT FIELD FUNCTIONS STARTS HERE
 
 function declareWinner(){
-    if(ubScore === 3 || tbScore === 3 || fbScore === 3){
-        gamePause();
-        endGamePage();
-        restartGame();
-        $("#quitBtn").click(function(){
-            window.open("https://github.com/nlightmarecx", "_blank");
-        });
-    }         
+    if(ubScore === numRounds || tbScore === numRounds || fbScore === numRounds){
+        removeOutsider();
+        if(ubScore === numRounds && ubScore !== tbScore && ubScore !== fbScore 
+            || tbScore === numRounds && tbScore !== ubScore && tbScore !== fbScore 
+            || fbScore === numRounds && fbScore !== ubScore && fbScore !== tbScore
+            || fbScore === numRounds && fbScore !== ubScore && fbScore === tbScore){
+            gamePause();
+            endGamePage();
+            restartGame();
+            $("#quitBtn").click(function(){
+                window.open("https://github.com/nlightmarecx", "_blank");
+            });
+        }    
+    }        
 }
 
 function gamePause(){
@@ -416,11 +441,24 @@ function restartGame(){
         chooserU.innerHTML = "You";
         chooserT.innerHTML = "Thor";
         chooserF.innerHTML = "Frey";
-        $("#tChosenGest").removeClass("XrotateSwSh");
-        $("#tChosenGest").removeClass("ZrotateSword");
-        $("#tChosenGest").removeClass("ZrotateBow");
-        $("#fChosenGest").removeClass("Yrotate");
+        
         gameOn = true;
+        outsiderT = false;
+        outsiderF = false;
+        $("#fChosenGest").css("display", "");
+        $("#tChosenGest").css("display", "");
+        $("#uChosenGest").css({"bottom": "8px", "left": "60px"});
+        $("#fChosenGest").css({"bottom": "8px", "right": "60px"});
+        $("#tChosenGest").css({"bottom": "202.5", "right": "175px"});
+        $("#uChosenGest").css({"transform": "rotateZ(0deg)"});
+        $("#tChosenGest").css({"transform": "rotateZ(0deg)"});
+        $("#fChosenGest").css({"transform": "rotateZ(0deg)"});
+
+        $("#fScBoard").css({"color": "white"});
+        $("#fScore").css({"text-shadow": "0 0 10px cyan", "color": "white"});
+        $("#tScBoard").css({"color": "white"});
+        $("#tScore").css({"text-shadow": "0 0 10px cyan", "color": "white"});
+        numRounds = 5;
     });
 }
 

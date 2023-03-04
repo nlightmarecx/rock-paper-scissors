@@ -38,13 +38,13 @@ body {
 }
 
 #chosenGestsDiv{
+    font-size: 18px;
     display: flex;
     justify-content: center;
     width: 550px;
     height: 405px;
     margin: 0 auto;
     position: relative;
-    border: solid 1px red;
 }
 
 .gest{
@@ -70,32 +70,21 @@ body {
     position: absolute;
     bottom: 8px;
     left: 60px;
+    transition: 1.25s;
 }
 
 #tChosenGest{
     position: absolute;
+    /*bottom: 202.5px;
+    right: 175px; WONT WORK!*/ 
+    transition: 1.25s;
 }
 
 #fChosenGest{
     position: absolute;
     bottom: 8px;
     right: 60px;
-}
-
-.Yrotate{
-   transform: rotateY(180deg);
-}
-
-.ZrotateBow{
-    transform: rotateZ(135.5deg);
-}
-
-.ZrotateSword{
-    transform: rotateZ(139deg);
-}
-
-.XrotateSwSh{
-    transform: rotateZ(180deg);
+    transition: 1.25s;
 }
 
 #scoreRecordDiv{
@@ -332,7 +321,6 @@ body {
     border: double 2px rgb(89, 255, 47);
 }
 
-/*
 #introTxt1, #introTxt2,
 #introTxt3a, #introTxt3b, #introTxt4 {
     overflow: hidden; 
