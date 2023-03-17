@@ -449,7 +449,7 @@ function restartGame(){
         $("#tChosenGest").css("display", "");
         $("#uChosenGest").css({"bottom": "8px", "left": "60px"});
         $("#fChosenGest").css({"bottom": "8px", "right": "60px"});
-        $("#tChosenGest").css({"bottom": "202.5", "right": "175px"});
+        $("#tChosenGest").css({"bottom": "202.5", "right": "148px"});
         $("#uChosenGest").css({"transform": "rotateZ(0deg)"});
         $("#tChosenGest").css({"transform": "rotateZ(0deg)"});
         $("#fChosenGest").css({"transform": "rotateZ(0deg)"});
