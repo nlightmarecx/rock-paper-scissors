@@ -409,3 +409,12 @@ main{
         transform: translateY(0px);
     }
 }
+
+/* ---------------Style the footer--------------- */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    color: #fff;
+    
+}
