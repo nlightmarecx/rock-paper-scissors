@@ -1,5 +1,5 @@
 # The-Odin-Project_Rock-Paper-Scissors
-## [Live Demo](https://nlightmarecx.github.io/rock-paper-scissors/)
+## [Live Demo](https://nlightmarecx.github.io/The-Odin-Project_Rock-Paper-Scissors/)
 
 ![This is an image](https://raw.githubusercontent.com/nlightmarecx/rock-paper-scissors/main/Demo-Theme-Image.PNG)
 
